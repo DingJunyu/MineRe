@@ -55,7 +55,7 @@ void Mine::Output(bool Ans) {
 		else if (Status == 2)
 			cout << " " << setw(2) << setiosflags(ios::left) << MineAround;
 		else
-			cout << " ¡ö";
+			cout << " â– ";
 	}
 	else
 	{
