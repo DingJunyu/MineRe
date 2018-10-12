@@ -184,7 +184,7 @@ bool MarkHereWhenSurronded(Mine Map[MAX_HIGH][MAX_LENGTH], int Length, int High,
 				return false;
 
 		}
-		if (Xinput + 1 <= Length && Yinput + 1 <= High)
+		if (Xinput + 1 < Length && Yinput + 1 < High)
 		{
 			if (!(Map[Yinput + 1][Xinput + 1].CheckStatus() == 2 ||
 				Map[Yinput + 1][Xinput + 1].CheckStatus() == 1))
@@ -224,7 +224,7 @@ bool MarkHereWhenSurronded(Mine Map[MAX_HIGH][MAX_LENGTH], int Length, int High,
 				Map[Yinput + 1][Xinput].CheckStatus() == 1))
 				return false;
 		}
-		if (Xinput + 1 <= Length)
+		if (Xinput + 1 < Length)
 		{
 			if (Map[Yinput][Xinput + 1].CheckMine() &&
 				Map[Yinput][Xinput + 1].CheckStatus() != 3)
@@ -274,7 +274,7 @@ void MarkVoid(Mine Map[MAX_HIGH][MAX_LENGTH], int Length, int High,
 				Map[Yinput + 1][Xinput].AreaStatusChange(2);
 			}
 		}
-		if (Xinput + 1 <= Length &&
+		if (Xinput + 1 < Length &&
 			Map[Yinput][Xinput +1].CheckStatus() == 0)
 		{
 			if (Map[Yinput][Xinput + 1].CheckVoid())
