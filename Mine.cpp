@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "stdafx.h"
 #include "Mine.h"
 using namespace std;
 
@@ -9,7 +9,7 @@ Mine::Mine()
 	MineAround = 0;
 }
 
-Mine& Mine::PutMine() 
+Mine& Mine::PutMine()
 {
 	MineMark = true;
 	return *this;
@@ -21,7 +21,7 @@ Mine& Mine::AreaStatusChange(int Choice)
 	return *this;
 }
 
-Mine& Mine::Count(bool Mi) 
+Mine& Mine::Count(bool Mi)
 {
 	if (Mi)
 		++MineAround;
@@ -85,7 +85,7 @@ int Mine::MineClearance(int Choice)
 		}
 		else {
 			AreaStatusChange(2);
-			if(!CheckVoid())
+			if (!CheckVoid())
 				return 2;//a safe area
 			return 3;//need to scan void area nearby
 		}
@@ -93,11 +93,11 @@ int Mine::MineClearance(int Choice)
 	if (Choice == 1)
 	{
 		AreaStatusChange(1);
-			return 2;
+		return 2;
 	}
 	if (Choice == 2)
 	{
-		if (Status == 1) 
+		if (Status == 1)
 		{
 			AreaStatusChange(0);
 			return 2;
@@ -175,7 +175,7 @@ bool MarkHereWhenSurronded(Mine Map[MAX_HIGH][MAX_LENGTH], int Length, int High,
 			if (!(Map[Yinput - 1][Xinput + 1].CheckStatus() == 2 ||
 				Map[Yinput - 1][Xinput + 1].CheckStatus() == 1))
 				return false;
- 
+
 		}
 		if (Xinput - 1 >= 0 && Yinput + 1 < High)
 		{
@@ -245,13 +245,13 @@ void MarkVoid(Mine Map[MAX_HIGH][MAX_LENGTH], int Length, int High,
 	Map[Yinput][Xinput].AreaStatusChange(2);
 	if (!Map[Yinput][Xinput].CheckMine()) {
 		if (Xinput - 1 >= 0 &&
-			Map[Yinput][Xinput-1].CheckStatus() == 0)
+			Map[Yinput][Xinput - 1].CheckStatus() == 0)
 		{
 			if (Map[Yinput][Xinput - 1].CheckVoid())
 				MarkVoid(Map, Length, High, Xinput - 1, Yinput);
 			if (!Map[Yinput][Xinput - 1].CheckMine())
 			{
-				Map[Yinput][Xinput-1].AreaStatusChange(2);
+				Map[Yinput][Xinput - 1].AreaStatusChange(2);
 			}
 		}
 		if (Yinput - 1 >= 0 &&
@@ -275,13 +275,13 @@ void MarkVoid(Mine Map[MAX_HIGH][MAX_LENGTH], int Length, int High,
 			}
 		}
 		if (Xinput + 1 < Length &&
-			Map[Yinput][Xinput +1].CheckStatus() == 0)
+			Map[Yinput][Xinput + 1].CheckStatus() == 0)
 		{
 			if (Map[Yinput][Xinput + 1].CheckVoid())
 				MarkVoid(Map, Length, High, Xinput + 1, Yinput);
 			if (!Map[Yinput][Xinput + 1].CheckMine())
 			{
-				Map[Yinput][Xinput+1].AreaStatusChange(2);
+				Map[Yinput][Xinput + 1].AreaStatusChange(2);
 			}
 		}
 	}
